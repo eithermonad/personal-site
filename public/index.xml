@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jamie Corkhill</title>
+    <link>/</link>
+    <description>Recent content on Jamie Corkhill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 13 Sep 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Practical Introduction to Dependency Injection</title>
+      <link>/2020/12/a-practical-introduction-to-dependency-injection/</link>
+      <pubDate>Wed, 30 Dec 2020 21:25:12 -0600</pubDate>
+      
+      <guid>/2020/12/a-practical-introduction-to-dependency-injection/</guid>
+      <description>This article was first written for Smashing Magazine on December 30, 2020. You can find it here.
+ Introduction The concept of Dependency Injection is, at its core, a fundamentally simple notion. It is, however, commonly presented in a manner alongside the more theoretical concepts of Inversion of Control, Dependency Inversion, the SOLID Principles, and so forth. To make it as easy as possible for you to get started using Dependency Injection and begin reaping its benefits, this article will remain very much on the practical side of the story, depicting examples that show precisely the benefits of its use, in a manner chiefly divorced from the associated theory.</description>
+    </item>
+    
+    <item>
+      <title>Understanding Typescript Generics</title>
+      <link>/2020/10/understanding-typescript-generics/</link>
+      <pubDate>Wed, 14 Oct 2020 11:10:54 -0500</pubDate>
+      
+      <guid>/2020/10/understanding-typescript-generics/</guid>
+      <description>This article was first written for Smashing Magazine on October 10th, 2020. You can find it here.
+ Introduction In this article, we’ll be learning the concept of Generics in TypeScript and examining how Generics can be used to write modular, decoupled, and reusable code. Along the way, we’ll briefly discuss how they fit into better testing patterns, approaches to error handling, and domain/data-access separation.
+A Real-World Example I want to enter into the world of Generics not by explaining what they are, but rather by providing an intuitive example for why they are useful.</description>
+    </item>
+    
+    <item>
+      <title>Test Katex Integration</title>
+      <link>/2020/09/test-katex-integration/</link>
+      <pubDate>Tue, 15 Sep 2020 18:19:12 -0500</pubDate>
+      
+      <guid>/2020/09/test-katex-integration/</guid>
+      <description>An nth Partial Sum:
+$$ \sum_{i=1}^n i = \frac{n(n+1)}{2} $$
+A code example:
+int main(int argc, char *argv[]) { int count = 0; int max = argv[1]; for (int i = 1; i &amp;lt;= max; i++) { count += i; } std::cout &amp;lt;&amp;lt; &amp;#34;Sum: &amp;#34; &amp;lt;&amp;lt; count &amp;lt;&amp;lt; std::endl; } Product $\prod_{i=a}^{b} f(i)$ inside text.
+A chemical formula:
+$C_p[\ce{H2O(l)}] = \pu{75.3 J // mol K}$
+A little bit more complex:</description>
+    </item>
+    
+    <item>
+      <title>Getting Started With An Express And ES6&#43; JavaScript Stack</title>
+      <link>/2020/09/getting-started-with-an-express-and-es6-javascript-stack/</link>
+      <pubDate>Sun, 13 Sep 2020 14:27:44 -0500</pubDate>
+      
+      <guid>/2020/09/getting-started-with-an-express-and-es6-javascript-stack/</guid>
+      <description>This article was first written for Smashing Magazine on November 22nd, 2019. You can find it here.
+ This article is the second part in a series, with part one located here, which provided basic and (hopefully) intuitive insight into Node.js, ES6+ JavaScript, Callback Functions, Arrow Functions, APIs, the HTTP Protocol, JSON, MongoDB, and more.
+In this article, we&amp;rsquo;ll build upon the skills we attained in the previous one, learning how to implement and deploy a MongoDB Database for storing user booklist information, build an API with Node.</description>
+    </item>
+    
+    <item>
+      <title>Get Started With Node: An Introduction To APIs, HTTP And ES6&#43; JavaScript</title>
+      <link>/2020/09/get-started-with-node-an-introduction-to-apis-http-and-es6-javascript/</link>
+      <pubDate>Sun, 13 Sep 2020 14:14:52 -0500</pubDate>
+      
+      <guid>/2020/09/get-started-with-node-an-introduction-to-apis-http-and-es6-javascript/</guid>
+      <description>This article was first written for Smashing Magazine on February 20, 2019. You can find it here.
+ You’ve probably heard of Node.js as being an “asynchronous JavaScript runtime built on Chrome’s V8 JavaScript engine”, and that it “uses an event-driven, non-blocking I/O model that makes it lightweight and efficient”. But for some, that is not the greatest of explanations.
+What is Node in the first place? What exactly does it mean for Node to be “asynchronous”, and how does that differ from “synchronous”?</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Age: 18. Software Developer. TypeScript, React, Node, C#. Lover of Enterprise Patterns, Physics. Learning DDD/CQRS/ES &amp;amp; Microservices.</description>
+    </item>
+    
+  </channel>
+</rss>

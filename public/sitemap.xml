@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/2020/12/a-practical-introduction-to-dependency-injection/</loc>
+    <lastmod>2020-12-30T21:25:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/dependency-injection/</loc>
+    <lastmod>2020-12-30T21:25:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/patterns/</loc>
+    <lastmod>2020-12-30T21:25:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2020-12-30T21:25:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-12-30T21:25:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/unit-testing/</loc>
+    <lastmod>2020-12-30T21:25:12-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/generics/</loc>
+    <lastmod>2020-10-14T11:10:54-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/repository-pattern/</loc>
+    <lastmod>2020-10-14T11:10:54-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/typescript/</loc>
+    <lastmod>2020-10-14T11:10:54-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/10/understanding-typescript-generics/</loc>
+    <lastmod>2020-10-14T11:10:54-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/chemistry/</loc>
+    <lastmod>2020-09-15T18:19:12-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/katex/</loc>
+    <lastmod>2020-09-15T18:19:12-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/mathematics/</loc>
+    <lastmod>2020-09-15T18:19:12-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/09/test-katex-integration/</loc>
+    <lastmod>2020-09-15T18:19:12-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/09/getting-started-with-an-express-and-es6-javascript-stack/</loc>
+    <lastmod>2020-09-13T14:27:44-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/09/get-started-with-node-an-introduction-to-apis-http-and-es6-javascript/</loc>
+    <lastmod>2020-09-13T14:14:52-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2020-09-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-09-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+  </url>
+  
+</urlset>

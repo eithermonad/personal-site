@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Jamie Corkhill</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Jamie Corkhill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 30 Dec 2020 21:25:12 -0600</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>dependency-injection</title>
+      <link>/tags/dependency-injection/</link>
+      <pubDate>Wed, 30 Dec 2020 21:25:12 -0600</pubDate>
+      
+      <guid>/tags/dependency-injection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>patterns</title>
+      <link>/tags/patterns/</link>
+      <pubDate>Wed, 30 Dec 2020 21:25:12 -0600</pubDate>
+      
+      <guid>/tags/patterns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>unit-testing</title>
+      <link>/tags/unit-testing/</link>
+      <pubDate>Wed, 30 Dec 2020 21:25:12 -0600</pubDate>
+      
+      <guid>/tags/unit-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>generics</title>
+      <link>/tags/generics/</link>
+      <pubDate>Wed, 14 Oct 2020 11:10:54 -0500</pubDate>
+      
+      <guid>/tags/generics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>repository-pattern</title>
+      <link>/tags/repository-pattern/</link>
+      <pubDate>Wed, 14 Oct 2020 11:10:54 -0500</pubDate>
+      
+      <guid>/tags/repository-pattern/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>typescript</title>
+      <link>/tags/typescript/</link>
+      <pubDate>Wed, 14 Oct 2020 11:10:54 -0500</pubDate>
+      
+      <guid>/tags/typescript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chemistry</title>
+      <link>/tags/chemistry/</link>
+      <pubDate>Tue, 15 Sep 2020 18:19:12 -0500</pubDate>
+      
+      <guid>/tags/chemistry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>katex</title>
+      <link>/tags/katex/</link>
+      <pubDate>Tue, 15 Sep 2020 18:19:12 -0500</pubDate>
+      
+      <guid>/tags/katex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mathematics</title>
+      <link>/tags/mathematics/</link>
+      <pubDate>Tue, 15 Sep 2020 18:19:12 -0500</pubDate>
+      
+      <guid>/tags/mathematics/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

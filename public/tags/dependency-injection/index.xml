@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dependency-injection on Jamie Corkhill</title>
+    <link>/tags/dependency-injection/</link>
+    <description>Recent content in dependency-injection on Jamie Corkhill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 30 Dec 2020 21:25:12 -0600</lastBuildDate>
+    
+	<atom:link href="/tags/dependency-injection/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Practical Introduction to Dependency Injection</title>
+      <link>/2020/12/a-practical-introduction-to-dependency-injection/</link>
+      <pubDate>Wed, 30 Dec 2020 21:25:12 -0600</pubDate>
+      
+      <guid>/2020/12/a-practical-introduction-to-dependency-injection/</guid>
+      <description>This article was first written for Smashing Magazine on December 30, 2020. You can find it here.
+ Introduction The concept of Dependency Injection is, at its core, a fundamentally simple notion. It is, however, commonly presented in a manner alongside the more theoretical concepts of Inversion of Control, Dependency Inversion, the SOLID Principles, and so forth. To make it as easy as possible for you to get started using Dependency Injection and begin reaping its benefits, this article will remain very much on the practical side of the story, depicting examples that show precisely the benefits of its use, in a manner chiefly divorced from the associated theory.</description>
+    </item>
+    
+  </channel>
+</rss>

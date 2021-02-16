@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Jamie Corkhill ">
+<meta name="description" content="This article was first written for Smashing Magazine on December 30, 2020. You can find it here.
+ Introduction The concept of Dependency Injection is, at its core, a fundamentally simple notion. It is, however, commonly presented in a manner alongside the more theoretical concepts of Inversion of Control, Dependency Inversion, the SOLID Principles, and so forth. To make it as easy as possible for you to get started using Dependency Injection and begin reaping its benefits, this article will remain very much on the practical side of the story, depicting examples that show precisely the benefits of its use, in a manner chiefly divorced from the associated theory." />
+<meta name="keywords" content="homepage, blog, science, informatics, development, programming, dependency-injection, unit-testing, patterns" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="/2020/12/a-practical-introduction-to-dependency-injection/" />
+
+
+    <title>
+        
+            A Practical Introduction to Dependency Injection :: Jamie Corkhill  — Software Developer
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.01bd3532e0e3c26e091b78775205232280e9e497674d20651219a39461d90d54.css">
+
+
+
+
+
+
+<meta itemprop="name" content="A Practical Introduction to Dependency Injection">
+<meta itemprop="description" content="This article was first written for Smashing Magazine on December 30, 2020. You can find it here.
+ Introduction The concept of Dependency Injection is, at its core, a fundamentally simple notion. It is, however, commonly presented in a manner alongside the more theoretical concepts of Inversion of Control, Dependency Inversion, the SOLID Principles, and so forth. To make it as easy as possible for you to get started using Dependency Injection and begin reaping its benefits, this article will remain very much on the practical side of the story, depicting examples that show precisely the benefits of its use, in a manner chiefly divorced from the associated theory.">
+<meta itemprop="datePublished" content="2020-12-30T21:25:12-06:00" />
+<meta itemprop="dateModified" content="2020-12-30T21:25:12-06:00" />
+<meta itemprop="wordCount" content="5663">
+<meta itemprop="image" content="/"/>
+
+
+
+<meta itemprop="keywords" content="dependency-injection,unit-testing,patterns," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/"/>
+
+<meta name="twitter:title" content="A Practical Introduction to Dependency Injection"/>
+<meta name="twitter:description" content="This article was first written for Smashing Magazine on December 30, 2020. You can find it here.
+ Introduction The concept of Dependency Injection is, at its core, a fundamentally simple notion. It is, however, commonly presented in a manner alongside the more theoretical concepts of Inversion of Control, Dependency Inversion, the SOLID Principles, and so forth. To make it as easy as possible for you to get started using Dependency Injection and begin reaping its benefits, this article will remain very much on the practical side of the story, depicting examples that show precisely the benefits of its use, in a manner chiefly divorced from the associated theory."/>
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-12-30 21:25:12 -0600 CST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">~/blog</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/about">About</a></li><li><a href="/posts">Blog</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+
+        
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-335KT9XL6L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-335KT9XL6L');
+    </script>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        27 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="/2020/12/a-practical-introduction-to-dependency-injection/">A Practical Introduction to Dependency Injection</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <blockquote>
+<p>This article was first written for Smashing Magazine on December 30, 2020. You can find it <a href="https://www.smashingmagazine.com/2020/12/practical-introduction-dependency-injection/">here</a>.</p>
+</blockquote>
+<h3 id="introduction">Introduction</h3>
+<p>The concept of Dependency Injection is, at its core, a fundamentally simple notion. It is, however, commonly presented in a manner alongside the more theoretical concepts of Inversion of Control, Dependency Inversion, the SOLID Principles, and so forth. To make it as easy as possible for you to get started using Dependency Injection and begin reaping its benefits, this article will remain very much on the practical side of the story, depicting examples that show precisely the benefits of its use, in a manner chiefly divorced from the associated theory. We&rsquo;ll spend only a very little amount of time discussing the academic concepts that surround dependency injection here, for the bulk of that explanation will be reserved for the second article of this series. Indeed, entire books can be and have been written that provide a more in-depth and rigorous treatment of the concepts.</p>
+<p>Here, we&rsquo;ll start with a simple explanation, move to a few more real-world examples, and then discuss some background information. Another article, to follow this one, will discuss how Dependency Injection fits into the overall ecosystem of applying best-practice architectural patterns.</p>
+<h3 id="a-simple-explanation">A Simple Explanation</h3>
+<p>&ldquo;Dependency Injection&rdquo; is an overly-complex term for an extremely simple concept. At this point, some wise and reasonable questions would be &ldquo;how do you define &ldquo;dependency&rdquo;?&quot;, &ldquo;what does it mean for a dependency to be &ldquo;injected&rdquo;?&quot;, &ldquo;can you inject dependencies in different ways?&quot;, &ldquo;why is this useful?&rdquo; You might not believe that a term like &ldquo;Dependency Injection&rdquo; can be explained in two code snippets and a couple of words, but alas, it can:</p>
+<p>The simplest way to explain the concept is to show you. This is <strong>not</strong> dependency injection:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Engine</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Engine&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Car</span> {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">engine</span>: <span style="color:#66d9ef">Engine</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">constructor</span> () {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">engine</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Engine</span>();
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">startEngine</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">engine</span>.<span style="color:#a6e22e">fireCylinders</span>();
+    }
+}
+</code></pre></div><p>And this <strong>is</strong> dependency injection:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Engine</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Engine&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Car</span> {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">engine</span>: <span style="color:#66d9ef">Engine</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">constructor</span> (<span style="color:#a6e22e">engine</span>: <span style="color:#66d9ef">Engine</span>) {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">engine</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">engine</span>;
+    }
+    
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">startEngine</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">engine</span>.<span style="color:#a6e22e">fireCylinders</span>();
+    }
+}
+</code></pre></div><p>Done. That&rsquo;s it. Cool. The end.</p>
+<p>What changed? Rather than allow the <code>Car</code> class to instantiate <code>Engine</code>, as it did in the first example, in the second example, <code>Car</code> had an instance of <code>Engine</code> passed in, or <em>injected</em> in, from some higher level of control, to its constructor. That&rsquo;s it. At its core, this is all dependency injection is - the act of injecting (passing) a dependency into another class or function. Anything else involving the notion of dependency injection is simply a variation on this fundamental and simple concept. Put trivially, dependency injection is a technique whereby an object receives other objects it depends on, called dependencies, rather than creating them itself.</p>
+<p>In general, to define what a &ldquo;dependency&rdquo; is, if some class <code>A</code> uses the functionality of a class <code>B</code>, then <code>B</code> is a dependency for <code>A</code>, or, in other words, <code>A</code> has a dependency on <code>B</code>. Of course, this isn&rsquo;t limited to classes and holds for functions too. In this case, the class <code>Car</code> has a dependency on the <code>Engine</code> class, or <code>Engine</code> is a dependency of <code>Car</code>. Dependencies are simply variables, just like most things in programming.</p>
+<p>Dependency Injection is widely-used to support many use cases, but perhaps the most blatant of uses is to permit easier testing. In the first example, we can&rsquo;t easily mock out <code>engine</code> because the <code>Car</code> class instantiates it. The real engine is always being used. But, in the latter case, we have control over the <code>Engine</code> that is used, which means, in a test, we can subclass <code>Engine</code> and override its methods. For example, if we wanted to see what <code>Car.startEngine()</code> does if <code>engine.fireCylinders()</code> throws an error, we could simply create a <code>FakeEngine</code> class, have it extend the <code>Engine</code> class, and then override <code>fireCylinders</code> to make it throw an error. In the test, we can inject that <code>FakeEngine</code> object into the constructor for <code>Car</code>. Since <code>FakeEngine</code> <strong>is an</strong> <code>Engine</code> by implication of inheritance, the TypeScript type system is satisfied.</p>
+<p>I want to make it very, very clear that what you see above is the core notion of dependency injection. A <code>Car</code>, by itself, is not smart enough to know what engine it needs. Only the engineers that <em>construct</em> the car understand the requirements for its engines and wheels. Thus, it makes sense that the people who <em>construct</em> the car provide the specific engine required, rather than letting a <code>Car</code> itself pick whichever engine it wants to use. I use the word &ldquo;construct&rdquo; specifically because you construct the car by calling the constructor, which is the place dependencies are injected. If the car also created its own tires in addition to the engine, how do we know that the tires being used are safe to be spun at the max RPM the engine can output? For all these reasons and more, it should make sense, perhaps intuitively, that <code>Car</code> should have nothing to do with deciding what <code>Engine</code> and what <code>Wheels</code> it uses. They should be provided from some higher level of control. In the latter example depicting dependency injection in action, if you imagine <code>Engine</code> to be an abstract class rather than a concrete one, this should make even more sense - the car knows it needs an engine and it knows the engine has to have some basic functionality, but how that engine is managed and what the specific implementation of it is is reserved for being decided and provided by the piece of code that creates (constructs) the car.</p>
+<h3 id="a-real-world-example">A Real-World Example</h3>
+<p>We&rsquo;re going to look at a few more practical examples that hopefully help to explain, again intuitively, why dependency injection is useful. Hopefully, by not harping on the theoretical and instead moving straight into applicable concepts, you can more fully see the benefits that dependency injection provides, and the difficulties of life without it. We&rsquo;ll revert to a slightly more &ldquo;academic&rdquo; treatment of the topic later.</p>
+<p>We&rsquo;ll start by constructing our application normally, in a manner highly coupled, without utilizing dependency injection or abstractions, so that we come to see the downsides of this approach and the difficulty it adds to testing. Along the way, we&rsquo;ll gradually refactor until we rectify all of the issues.</p>
+<p>To begin, suppose you&rsquo;ve been tasked with building two classes - an email provider and a class for a data access layer that needs to be used by some <code>UserService</code>. We&rsquo;ll start with data access, but both are easily defined:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// UserRepository.ts
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">dbDriver</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;pg-driver&#39;</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserRepository</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">User</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// ... dbDriver.save(...)
+</span><span style="color:#75715e"></span>    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// ... dbDriver.query(...)
+</span><span style="color:#75715e"></span>    }
+    
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">existsByEmail</span>(<span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">boolean</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// ... dbDriver.save(...)
+</span><span style="color:#75715e"></span>    }
+}
+</code></pre></div><p><em><strong>Note:</strong> The name &ldquo;Repository&rdquo; here comes from the &ldquo;Repository Pattern&rdquo;, a method of decoupling your database from your business logic. You can <a href="https://martinfowler.com/eaaCatalog/repository.html">learn more about the Repository Pattern</a>, but for the purposes of this article, you can simply consider it to be some class that encapsulates away your database so that, to business logic, your data storage system is treated as merely an in-memory collection. Explaining the Repository Pattern fully is outside the purview of this article.</em></p>
+<p>This is how we normally expect things to work, and <code>dbDriver</code> is hardcoded within the file.</p>
+<p>In your <code>UserService</code>, you&rsquo;d import the class, instantiate it, and start using it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">UserRepository</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./UserRepository.ts&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserService</span> {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">readonly</span> <span style="color:#a6e22e">userRepository</span>: <span style="color:#66d9ef">UserRepository</span>;
+    
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">constructor</span> () {
+        <span style="color:#75715e">// Not dependency injection.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">UserRepository</span>();
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">registerUser</span>(<span style="color:#a6e22e">dto</span>: <span style="color:#66d9ef">IRegisterUserDto</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// User object &amp; validation
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">fromDto</span>(<span style="color:#a6e22e">dto</span>);
+
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">existsByEmail</span>(<span style="color:#a6e22e">dto</span>.<span style="color:#a6e22e">email</span>))
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DuplicateEmailError</span>());
+            
+        <span style="color:#75715e">// Database persistence
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">user</span>);
+        
+        <span style="color:#75715e">// Send a welcome email
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// No need for await here, the promise will be unwrapped by the caller.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>);
+    }
+}
+</code></pre></div><p>Once again, all remains normal.</p>
+<p><em><strong>A brief aside:</strong> A DTO is a Data Transfer Object - it&rsquo;s an object that acts as a property bag to define a standardized data shape as it moves between two external systems or two layers of an application. You can learn more about DTOs from Martin Fowler&rsquo;s article on the topic, <a href="https://martinfowler.com/eaaCatalog/dataTransferObject.html">here</a>. In this case, <code>IRegisterUserDto</code> defines a contract for what the shape of data should be as it comes up from the client. I only have it contain two properties - <code>id</code> and <code>email</code>. You might think it&rsquo;s peculiar that the DTO we expect from the client to create a new user contains the user&rsquo;s ID even though we haven&rsquo;t created a user yet. The ID is a UUID and I allow the client to generate it for a variety of reasons, which are outside the scope of this article. Additionally, the <code>findUserById</code> function should map the <code>User</code> object to a response DTO, but I neglected that for brevity. Finally, in the real world, I wouldn&rsquo;t have a <code>User</code> domain model contain a <code>fromDto</code> method. That&rsquo;s not good for domain purity. Once again, its purpose is brevity here.</em></p>
+<p>Next, you want to handle the sending of emails. Once again, as normal, you can simply create an email provider class and import it into your <code>UserService</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// SendGridEmailProvider.ts
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">sendMail</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;sendgrid&#39;</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SendGridEmailProvider</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">sendWelcomeEmail</span>(<span style="color:#a6e22e">to</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// ... await sendMail(...);
+</span><span style="color:#75715e"></span>    }
+}
+</code></pre></div><p>Within <code>UserService</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">UserRepository</span> }  <span style="color:#a6e22e">from</span>  <span style="color:#e6db74">&#39;./UserRepository.ts&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SendGridEmailProvider</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./SendGridEmailProvider.ts&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserService</span> {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">readonly</span> <span style="color:#a6e22e">userRepository</span>: <span style="color:#66d9ef">UserRepository</span>;
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">readonly</span> <span style="color:#a6e22e">sendGridEmailProvider</span>: <span style="color:#66d9ef">SendGridEmailProvider</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">constructor</span> () {
+        <span style="color:#75715e">// Still not doing dependency injection.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">UserRepository</span>();
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sendGridEmailProvider</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SendGridEmailProvider</span>();
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">registerUser</span>(<span style="color:#a6e22e">dto</span>: <span style="color:#66d9ef">IRegisterUserDto</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// User object &amp; validation
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">fromDto</span>(<span style="color:#a6e22e">dto</span>);
+        
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">existsByEmail</span>(<span style="color:#a6e22e">dto</span>.<span style="color:#a6e22e">email</span>))
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DuplicateEmailError</span>());
+        
+        <span style="color:#75715e">// Database persistence
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">user</span>);
+        
+        <span style="color:#75715e">// Send welcome email
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sendGridEmailProvider</span>.<span style="color:#a6e22e">sendWelcomeEmail</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span>);
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>);
+    }
+}
+</code></pre></div><p>We now have a fully working class, and in a world where we don&rsquo;t care about testability or writing clean code by any manner of the definition at all, and in a world where technical debt is non-existent and pesky program managers don&rsquo;t set deadlines, this is perfectly fine. Unfortunately, that&rsquo;s not a world we have the benefit of living in.</p>
+<p>What happens when we decide we need to migrate away from SendGrid for emails and use MailChimp instead? Similarly, what happens when we want to unit test our methods - are we going to use the real database in the tests? Worse, are we actually going to send real emails to potentially real email addresses and pay for it too? In the traditional JavaScript ecosystem, the methods of unit testing classes under this configuration are fraught with complexity and over-engineering. People bring in whole entire libraries simply to provide stubbing functionality, which adds all kinds of layers of indirection, and, even worse, can directly couple the tests to the implementation of the system under test, when, in reality, tests should never know how the real system works (this is known as black-box testing). We&rsquo;ll work to mitigate these issues as we discuss what the actual responsibility of <code>UserService</code> is and apply new techniques of dependency injection.</p>
+<p>Consider, for a moment, what a <code>UserService</code> does. The whole point of the existence of <code>UserService</code> is to execute specific use cases involving users - registering them, reading them, updating them, etc. It&rsquo;s a best practice for classes and functions to have only one responsibility (SRP - the Single Responsibility Principle), and the responsibility of <code>UserService</code> is to handle user-related operations. Why, then, is <code>UserService</code> responsible for controlling the lifetime of <code>UserRepository</code> and <code>SendGridEmailProvider</code> in this example? Imagine if we had some other class used by <code>UserService</code> which opened a long-running connection. Should <code>UserService</code> be responsible for disposing of that connection too? Of course not. All of these dependencies have a lifetime associated with them - they could be singletons, they could be transient and scoped to a specific HTTP Request, etc. The controlling of these lifetimes is well outside the purview of <code>UserService</code>. So, to solve these issues, we&rsquo;ll inject all of the dependencies in, just like we saw before.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">UserRepository</span> }  <span style="color:#a6e22e">from</span>  <span style="color:#e6db74">&#39;./UserRepository.ts&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SendGridEmailProvider</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./SendGridEmailProvider.ts&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserService</span> {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">readonly</span> <span style="color:#a6e22e">userRepository</span>: <span style="color:#66d9ef">UserRepository</span>;
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">readonly</span> <span style="color:#a6e22e">sendGridEmailProvider</span>: <span style="color:#66d9ef">SendGridEmailProvider</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">constructor</span> (
+        <span style="color:#a6e22e">userRepository</span>: <span style="color:#66d9ef">UserRepository</span>,
+        <span style="color:#a6e22e">sendGridEmailProvider</span>: <span style="color:#66d9ef">SendGridEmailProvider</span>
+    ) {
+        <span style="color:#75715e">// Yay! Dependencies are injected.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">userRepository</span>;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sendGridEmailProvider</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sendGridEmailProvider</span>;
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">registerUser</span>(<span style="color:#a6e22e">dto</span>: <span style="color:#66d9ef">IRegisterUserDto</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// User object &amp; validation
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">fromDto</span>(<span style="color:#a6e22e">dto</span>);
+
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">existsByEmail</span>(<span style="color:#a6e22e">dto</span>.<span style="color:#a6e22e">email</span>))
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DuplicateEmailError</span>());
+        
+        <span style="color:#75715e">// Database persistence
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">user</span>);
+        
+        <span style="color:#75715e">// Send welcome email
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sendGridEmailProvider</span>.<span style="color:#a6e22e">sendWelcomeEmail</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span>);
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>);
+    }
+}
+</code></pre></div><p>Great - now <code>UserService</code> receives pre-instantiated objects, and whichever piece of code calls and creates a new <code>UserService</code> is the piece of code in charge of controlling the lifetime of the dependencies. We&rsquo;ve inverted control away from <code>UserService</code> and up to a higher level. If I only wanted to show how we could inject dependencies through the constructor as to explain the basic tenant of dependency injection, I could stop here. There are still some problems from a design perspective, however, which when rectified, will serve to make our use of dependency injection all the more powerful.</p>
+<p>Firstly, why does <code>UserService</code> know that we&rsquo;re using SendGrid for emails? Secondly, both dependencies are on concrete classes - the concrete <code>UserRepository</code> and the concrete <code>SendGridEmailProvider</code>. This relationship is too rigid - we&rsquo;re stuck having to pass in some object that <strong>is a</strong> <code>UserRepository</code> and <strong>is a</strong> <code>SendGridEmailProvider</code>.</p>
+<p>This isn&rsquo;t great because we want <code>UserService</code> to be completely agnostic to the implementation of its dependencies. By having <code>UserService</code> be blind in that manner, we can swap out the implementations without affecting the service at all - this means, if we decide to migrate away from SendGrid and use MailChimp instead, we can do so. It also means if we want to fake out the email provider for tests, we can do that too. What would be useful is if we could define some public interface and force that incoming dependencies abide by that interface, while still having <code>UserService</code> be agnostic to implementation details. Put another way, we need to force <code>UserService</code> to only depend on an abstraction of its dependencies, and not it&rsquo;s actual concrete dependencies. We can do that through, well, interfaces.</p>
+<p>Start by defining an interface for the <code>UserRepository</code> and implement it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// UserRepository.ts
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">dbDriver</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;pg-driver&#39;</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IUserRepository</span> {
+    <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">User</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span>;
+    <span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span>;
+    <span style="color:#a6e22e">existsByEmail</span>(<span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">boolean</span><span style="color:#f92672">&gt;</span>;
+}
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserRepository</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">IUserRepository</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">User</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// ... dbDriver.save(...)
+</span><span style="color:#75715e"></span>    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// ... dbDriver.query(...)
+</span><span style="color:#75715e"></span>    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">existsByEmail</span>(<span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">boolean</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// ... dbDriver.save(...)
+</span><span style="color:#75715e"></span>    }
+}
+</code></pre></div><p>And define one for the email provider, also implementing it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// IEmailProvider.ts
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IEmailProvider</span> {
+    <span style="color:#a6e22e">sendWelcomeEmail</span>(<span style="color:#a6e22e">to</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span>;
+}
+
+<span style="color:#75715e">// SendGridEmailProvider.ts
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">sendMail</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;sendgrid&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">IEmailProvider</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./IEmailProvider&#39;</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SendGridEmailProvider</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">IEmailProvider</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">sendWelcomeEmail</span>(<span style="color:#a6e22e">to</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// ... await sendMail(...);
+</span><span style="color:#75715e"></span>    }
+}
+</code></pre></div><p><em><strong>Note:</strong> This is the <a href="https://en.wikipedia.org/wiki/Adapter_pattern">Adapter Pattern</a> from the Gang of Four Design Patterns.</em></p>
+<p>Now, our <code>UserService</code> can depend on the interfaces rather than the concrete implementations of the dependencies:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">IUserRepository</span> }  <span style="color:#a6e22e">from</span>  <span style="color:#e6db74">&#39;./UserRepository.ts&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">IEmailProvider</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./SendGridEmailProvider.ts&#39;</span>;
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserService</span> {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">readonly</span> <span style="color:#a6e22e">userRepository</span>: <span style="color:#66d9ef">IUserRepository</span>;
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">readonly</span> <span style="color:#a6e22e">emailProvider</span>: <span style="color:#66d9ef">IEmailProvider</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">constructor</span> (
+        <span style="color:#a6e22e">userRepository</span>: <span style="color:#66d9ef">IUserRepository</span>,
+        <span style="color:#a6e22e">emailProvider</span>: <span style="color:#66d9ef">IEmailProvider</span>
+    ) {
+        <span style="color:#75715e">// Double yay! Injecting dependencies and coding against interfaces.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">userRepository</span>;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">emailProvider</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">emailProvider</span>;
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">registerUser</span>(<span style="color:#a6e22e">dto</span>: <span style="color:#66d9ef">IRegisterUserDto</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#75715e">// User object &amp; validation
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">fromDto</span>(<span style="color:#a6e22e">dto</span>);
+
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">existsByEmail</span>(<span style="color:#a6e22e">dto</span>.<span style="color:#a6e22e">email</span>))
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DuplicateEmailError</span>());
+        
+        <span style="color:#75715e">// Database persistence
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">user</span>);
+        
+        <span style="color:#75715e">// Send welcome email
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">emailProvider</span>.<span style="color:#a6e22e">sendWelcomeEmail</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span>);
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>);
+    }
+}
+</code></pre></div><p>If interfaces are new to you, this might look very, very complex. Indeed, the concept of building loosely coupled software might be new to you too. Think about wall receptacles. You can plug any device into any receptacle so long as the plug fits the outlet. That&rsquo;s loose coupling in action. Your toaster is not hard-wired into the wall, because if it was, and you decide to upgrade your toaster, you&rsquo;re out of luck. Instead, outlets are used, and the outlet defines the interface. Similarly, when you plug an electronic device into your wall receptacle, you&rsquo;re not concerned with the voltage potential, the max current draw, the AC frequency, etc., you just care if the plug fits into the outlet. You could have an electrician come in and change all the wires behind that outlet, and you won&rsquo;t have any problems plugging in your toaster, so long as that outlet doesn&rsquo;t change. Further, your electricity source could be switched to come from the city or your own solar panels, and once again, you don&rsquo;t care as long as you can still plug into that outlet. The interface is the outlet, providing &ldquo;plug-and-play&rdquo; functionality. In this example, the wiring in the wall and the electricity source is akin to the dependencies and your toaster is akin to the <code>UserService</code> (it has a dependency on the electricity) - the electricity source can change and the toaster still works fine and need not be touched, because the outlet, acting as the interface, defines the standard means for both to communicate. In fact, you could say that the outlet acts as an &ldquo;abstraction&rdquo; of the wall wiring, the circuit breakers, the electrical source, etc.</p>
+<p>It is a common and well-regarded principle of software design, for the reasons above, to code against interfaces (abstractions) and not implementations, which is what we&rsquo;ve done here. In doing so, we&rsquo;re given the freedom to swap out implementations as we please, for those implementations are hidden behind the interface (just like wall wiring is hidden behind the outlet), and so the business logic that uses the dependency never has to change so long as the interface never changes. Remember, <code>UserService</code> only needs to know what functionality is offered by its dependencies, not how that functionality is supported behind the scenes. That&rsquo;s why using interfaces works.</p>
+<p>These two simple changes of utilizing interfaces and injecting dependencies make all the difference in the world when it comes to building loosely coupled software and solves all of the problems we ran into above.</p>
+<p>If we decide tomorrow that we want to rely on MailChimp for emails, we simply create a new MailChimp class that honors the <code>IEmailProvider</code> interface and inject it in instead of SendGrid. The actual <code>UserService</code> class never has to change even though we&rsquo;ve just made a ginormous change to our system by switching to a new email provider. The beauty of these patterns is that <code>UserService</code> remains blissfully unaware of how the dependencies it uses work behind the scenes. The interface serves as the architectural boundary between both components, keeping them appropriately decoupled.</p>
+<p>Additionally, when it comes to testing, we can create fakes that abide by the interfaces and inject them instead. Here, you can see a fake repository and a fake email provider.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// Both fakes:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FakeUserRepository</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">IUserRepository</span> {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">readonly</span> <span style="color:#a6e22e">users</span>: <span style="color:#66d9ef">User</span>[] <span style="color:#f92672">=</span> [];
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">User</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">user</span>);
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userOrNone</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">u</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">id</span>);
+
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">userOrNone</span>
+            <span style="color:#f92672">?</span> <span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">userOrNone</span>)
+            <span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">NotFoundError</span>());
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">existsByEmail</span>(<span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">boolean</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#66d9ef">return</span> Boolean(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">u</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">email</span>));
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">getPersistedUserCount</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">length</span>;
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FakeEmailProvider</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">IEmailProvider</span> {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">readonly</span> <span style="color:#a6e22e">emailRecipients</span>: <span style="color:#66d9ef">string</span>[] <span style="color:#f92672">=</span> [];
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">sendWelcomeEmail</span>(<span style="color:#a6e22e">to</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">emailRecipients</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">to</span>);
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">wasEmailSentToRecipient</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">recipient</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span>
+        Boolean(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">emailRecipients</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">r</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">recipient</span>));
+}
+</code></pre></div><p>Notice that both fakes implement the same interfaces that <code>UserService</code> expects its dependencies to honor. Now, we can pass these fakes into <code>UserService</code> instead of the real classes and <code>UserService</code> will be none the wiser, it&rsquo;ll use them just as if they were the real deal. The reason it can do that is because it knows that all of the methods and properties it wants to use on its dependencies do indeed exist and are indeed accessible (because they implement the interfaces), which is all <code>UserService</code> needs to know (i.e, not how the dependencies work).</p>
+<p>We&rsquo;ll inject these two during tests, and it&rsquo;ll make the testing process so much easier and so much more straightforward than what you might be used to when dealing with over-the-top mocking and stubbing libraries, working with Jest&rsquo;s own internal tooling, or trying to monkey-patch.</p>
+<p>Here are actual tests using the fakes.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// Fakes
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fakeUserRepository</span>: <span style="color:#66d9ef">FakeUserRepository</span>;
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fakeEmailProvider</span>: <span style="color:#66d9ef">FakeEmailProvider</span>;
+
+<span style="color:#75715e">// SUT
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">userService</span>: <span style="color:#66d9ef">UserService</span>;
+
+<span style="color:#75715e">// We want to clean out the internal arrays of both fakes 
+</span><span style="color:#75715e">// before each test.
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">beforeEach</span>(() <span style="color:#f92672">=&gt;</span> {
+    <span style="color:#a6e22e">fakeUserRepository</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FakeUserRepository</span>();
+    <span style="color:#a6e22e">fakeEmailProvider</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FakeEmailProvider</span>();
+    
+    <span style="color:#a6e22e">userService</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">UserService</span>(<span style="color:#a6e22e">fakeUserRepository</span>, <span style="color:#a6e22e">fakeEmailProvider</span>);
+});
+
+<span style="color:#75715e">// A factory to easily create DTOs.
+</span><span style="color:#75715e">// Here, we have the optional choice of overriding the defaults
+</span><span style="color:#75715e">// thanks to the built in `Partial` utility type of TypeScript.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createSeedRegisterUserDto</span>(<span style="color:#a6e22e">opts?</span>: <span style="color:#66d9ef">Partial</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">IRegisterUserDto</span><span style="color:#f92672">&gt;</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">IRegisterUserDto</span> {
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;someId&#39;</span>,
+        <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;example@domain.com&#39;</span>,
+        ...<span style="color:#a6e22e">opts</span>
+    };
+}
+
+<span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#39;should correctly persist a user and send an email&#39;</span>, <span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
+    <span style="color:#75715e">// Arrange
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dto</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createSeedRegisterUserDto</span>();
+
+    <span style="color:#75715e">// Act
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">userService</span>.<span style="color:#a6e22e">registerUser</span>(<span style="color:#a6e22e">dto</span>);
+
+    <span style="color:#75715e">// Assert
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expectedUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">fromDto</span>(<span style="color:#a6e22e">dto</span>);
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">persistedUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">fakeUserRepository</span>.<span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">dto</span>.<span style="color:#a6e22e">id</span>);
+    
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">wasEmailSent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fakeEmailProvider</span>.<span style="color:#a6e22e">wasEmailSentToRecipient</span>(<span style="color:#a6e22e">dto</span>.<span style="color:#a6e22e">email</span>);
+
+    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">persistedUser</span>).<span style="color:#a6e22e">toEqual</span>(<span style="color:#a6e22e">expectedUser</span>);
+    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">wasEmailSent</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#66d9ef">true</span>);
+});
+
+<span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#39;should reject with a DuplicateEmailError if an email already exists&#39;</span>, <span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
+    <span style="color:#75715e">// Arrange
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">existingEmail</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;john.doe@live.com&#39;</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dto</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createSeedRegisterUserDto</span>({ <span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">existingEmail</span> });
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">existingUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">fromDto</span>(<span style="color:#a6e22e">dto</span>);
+    
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">fakeUserRepository</span>.<span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">existingUser</span>);
+
+    <span style="color:#75715e">// Act, Assert
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">userService</span>.<span style="color:#a6e22e">registerUser</span>(<span style="color:#a6e22e">dto</span>))
+        .<span style="color:#a6e22e">rejects</span>.<span style="color:#a6e22e">toBeInstanceOf</span>(<span style="color:#a6e22e">DuplicateEmailError</span>);
+
+    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">fakeUserRepository</span>.<span style="color:#a6e22e">getPersistedUserCount</span>()).<span style="color:#a6e22e">toBe</span>(<span style="color:#ae81ff">1</span>);
+});
+
+<span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#39;should correctly return a user&#39;</span>, <span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
+    <span style="color:#75715e">// Arrange
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">fromDto</span>(<span style="color:#a6e22e">createSeedRegisterUserDto</span>());
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">fakeUserRepository</span>.<span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">user</span>);
+
+    <span style="color:#75715e">// Act
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">receivedUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">userService</span>.<span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>);
+
+    <span style="color:#75715e">// Assert
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">receivedUser</span>).<span style="color:#a6e22e">toEqual</span>(<span style="color:#a6e22e">user</span>);
+});
+</code></pre></div><p>You&rsquo;ll notice a few things here - the hand-written fakes are very simple. There&rsquo;s no complexity from mocking frameworks which only serve to obfuscate. Everything is hand-rolled and that means there is no magic in the codebase. Asynchronous behavior is faked to match the interfaces. I use async/await in the tests even though all behavior is synchronous because I feel that it more closely matches how I&rsquo;d expect the operations to work in the real world and because by adding async/await, I can run this same test suite against real implementations too in addition to the fakes, thus handing asynchrony appropriately is required. In fact, in real life, I would most likely not even worry about mocking the database and would instead use a local DB in a Docker container until there were so many tests that I had to mock it away for performance. I could then run the in-memory DB tests after every single change and reserve the real local DB tests for right before committing changes and for on the build server in the CI/CD pipeline.</p>
+<p>In the first test, in the &ldquo;arrange&rdquo; section, we simply create the DTO. In the &ldquo;act&rdquo; section, we call the system under test and execute its behavior. Things get slightly more complex when making assertions. Remember, at this point in the test, we don&rsquo;t even know if the user was saved correctly. So, we define what we expect a persisted user to look like, and then we call the fake Repository and ask it for a user with the ID we expect. If the <code>UserService</code> didn&rsquo;t persist the user correctly, this will throw a <code>NotFoundError</code> and the test will fail, otherwise, it will give us back the user. Next, we call the fake email provider and ask it if it recorded sending an email to that user. Finally, we make the assertions with Jest and that concludes the test. It&rsquo;s expressive and reads just like how the system is actually working. There&rsquo;s no indirection from mocking libraries and there&rsquo;s no coupling to the implementation of the <code>UserService</code>.</p>
+<p>In the second test, we create an existing user and add it to the repository, then we try to call the service again using a DTO that has already been used to create and persist a user, and we expect that to fail. We also assert that no new data was added to the repository.</p>
+<p>For the third test, the &ldquo;arrange&rdquo; section now consists of creating a user and persisting it to the fake Repository. Then, we call the SUT, and finally, check if the user that comes back is the one we saved in the repo earlier.</p>
+<p>These examples are relatively simple, but when things get more complex, being able to rely on dependency injection and interfaces in this manner keeps your code clean and makes writing tests a joy.</p>
+<p><em><strong>A brief aside on testing:</strong> In general, you don&rsquo;t need to mock out every dependency that the code uses. Many people, erroneously, claim that a &ldquo;unit&rdquo; in a &ldquo;unit test&rdquo; is one function or one class. That could not be more incorrect. The &ldquo;unit&rdquo; is defined as the &ldquo;unit of functionality&rdquo; or the &ldquo;unit of behavior&rdquo;, not one function or class. So if a unit of behavior uses 5 different classes, you don&rsquo;t need to mock out all those classes <em>unless</em> they reach outside of the boundary of the module. In this case, I mocked the database and I mocked the email provider because I have no choice. If I don&rsquo;t want to use a real database and I don&rsquo;t want to send an email, I have to mock them out. But if I had a bunch more classes that didn&rsquo;t do anything across the network, I would not mock them because they&rsquo;re implementation details of the unit of behavior. I could also decide against mocking the database and emails and spin up a real local database and a real SMTP server, both in Docker containers. On the first point, I have no problem using a real database and still calling it a unit test so long as it&rsquo;s not too slow. Generally, I&rsquo;d use the real DB first until it became too slow and I had to mock, as discussed above. But, no matter what you do, you have to be pragmatic - sending welcome emails is not a mission-critical operation, thus we don&rsquo;t need to go that far in terms of SMTP servers in Docker containers. Whenever I do mock, I would be very unlikely to use a mocking framework or try to assert on the number of times called or parameters passed except in very rare cases, because that would couple tests to the implementation of the system under test, and they should be agnostic to those details.</em></p>
+<h3 id="performing-dependency-injection-without-classes-and-constructors">Performing Dependency Injection without Classes and Constructors</h3>
+<p>So far, throughout the article, we&rsquo;ve worked exclusively with classes and injected the dependencies through the constructor. If you&rsquo;re taking a functional approach to development and wish not to use classes, one can still obtain the benefits of dependency injection using function arguments. For example, our <code>UserService</code> class above could be refactored into:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">makeUserService</span>(
+    <span style="color:#a6e22e">userRepository</span>: <span style="color:#66d9ef">IUserRepository</span>,
+    <span style="color:#a6e22e">emailProvider</span>: <span style="color:#66d9ef">IEmailProvider</span>
+)<span style="color:#f92672">:</span> <span style="color:#a6e22e">IUserService</span> {
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#a6e22e">registerUser</span>: <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">dto</span> <span style="color:#f92672">=&gt;</span> {
+            <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>        },
+
+        <span style="color:#a6e22e">findUserById</span>: <span style="color:#66d9ef">id</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">userRepository</span>.<span style="color:#a6e22e">findUserById</span>(<span style="color:#a6e22e">id</span>)
+    }
+}
+</code></pre></div><p>It&rsquo;s a factory that receives the dependencies and constructs the service object. We can also inject dependencies into Higher Order Functions. A typical example would be creating an Express Middleware function that gets a <code>UserRepository</code> and an <code>ILogger</code> injected:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">authProvider</span>(<span style="color:#a6e22e">userRepository</span>: <span style="color:#66d9ef">IUserRepository</span>, <span style="color:#a6e22e">logger</span>: <span style="color:#66d9ef">ILogger</span>) {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">async</span> (<span style="color:#a6e22e">req</span>: <span style="color:#66d9ef">Request</span>, <span style="color:#a6e22e">res</span>: <span style="color:#66d9ef">Response</span>, <span style="color:#a6e22e">next</span>: <span style="color:#66d9ef">NextFunction</span>) <span style="color:#f92672">=&gt;</span> {
+        <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// Has access to userRepository, logger, req, res, and next.
+</span><span style="color:#75715e"></span>    }
+}
+</code></pre></div><p>In the first example, I didn&rsquo;t define the type of <code>dto</code> and <code>id</code> because if we define an interface called <code>IUserService</code> containing the method signatures for the service, then the TS Compiler will infer the types automatically. Similarly, had I defined a function signature for the Express Middleware to be the return type of <code>authProvider</code>, I wouldn&rsquo;t have had to declare the argument types there either.</p>
+<p>If we considered the email provider and the repository to be functional too, and if we injected their specific dependencies as well instead of hard coding them, the root of the application could look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">sendMail</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;sendgrid&#39;</span>;
+
+<span style="color:#a6e22e">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">main() {</span>
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+    
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dbConnection</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">connectToDatabase</span>();
+    
+    <span style="color:#75715e">// Change emailProvider to `makeMailChimpEmailProvider` whenever we want
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// with no changes made to dependent code.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userRepository</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">makeUserRepository</span>(<span style="color:#a6e22e">dbConnection</span>);
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">emailProvider</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">makeSendGridEmailProvider</span>(<span style="color:#a6e22e">sendMail</span>);
+    
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userService</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">makeUserService</span>(<span style="color:#a6e22e">userRepository</span>, <span style="color:#a6e22e">emailProvider</span>);
+
+    <span style="color:#75715e">// Put this into another file. It&#39;s a controller action.
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#39;/login&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) <span style="color:#f92672">=&gt;</span> {
+        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">userService</span>.<span style="color:#a6e22e">registerUser</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">body</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">IRegisterUserDto</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>();
+    });
+
+    <span style="color:#75715e">// Put this into another file. It&#39;s a controller action.
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">app</span>.<span style="color:#66d9ef">delete</span>(
+        <span style="color:#e6db74">&#39;/me&#39;</span>, 
+        <span style="color:#a6e22e">authProvider</span>(<span style="color:#a6e22e">userRepository</span>, <span style="color:#a6e22e">emailProvider</span>), 
+        (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) <span style="color:#f92672">=&gt;</span> { ... }
+    );
+}
+</code></pre></div><p>Notice that we fetch the dependencies that we need, like a database connection or third-party library functions, and then we utilize factories to make our first-party dependencies using the third-party ones. We then pass them into the dependent code. Since everything is coded against abstractions, I can swap out either <code>userRepository</code> or <code>emailProvider</code> to be any different function or class with any implementation I want (that still implements the interface correctly) and <code>UserService</code> will just use it with no changes needed, which, once again, is because <code>UserService</code> cares about nothing but the public interface of the dependencies, not how the dependencies work.</p>
+<p>As a disclaimer, I want to point out a few things. As stated earlier, this demo was optimized for showing how dependency injection makes life easier, and thus it wasn&rsquo;t optimized in terms of system design best practices insofar as the patterns surrounding how Repositories and DTOs should technically be used. In real life, one has to deal with managing transactions across repositories and the DTO should generally not be passed into service methods, but rather mapped in the controller to allow the presentation layer to evolve separately from the application layer. The <code>userSerivce.findById</code> method here also neglects to map the User domain object to a DTO, which it should do in real life. None of this affects the DI implementation though, I simply wanted to keep the focus on the benefits of DI itself, not Repository design, Unit of Work management, or DTOs. Finally, although this may look a little like the NestJS framework in terms of the manner of doing things, it&rsquo;s not, and I actively discourage people from using NestJS for reasons outside the scope of this article.</p>
+<h3 id="a-brief-theoretical-overview">A Brief Theoretical Overview</h3>
+<p>All applications are made up of collaborating components, and the manner in which those collaborators collaborate and are managed will decide how much the application will resist refactoring, resist change, and resist testing. Dependency injection mixed with coding against interfaces is a primary method (among others) of reducing the coupling of collaborators within systems, and making them easily swappable. This is the hallmark of a highly cohesive and loosely coupled design.</p>
+<p>The individual components that make up applications in non-trivial systems must be decoupled if we want the system to be maintainable, and the way we achieve that level of decoupling, as stated above, is by depending upon abstractions, in this case, interfaces, rather than concrete implementations, and utilizing dependency injection. Doing so provides loose coupling and gives us the freedom of swapping out implementations without needing to make any changes on the side of the dependent component/collaborator and solves the problem that dependent code has no business managing the lifetime of its dependencies and shouldn&rsquo;t know how to create them or dispose of them.</p>
+<p>Despite the simplicity of what we&rsquo;ve seen thus far, there&rsquo;s a lot more complexity that surrounds dependency injection.</p>
+<p>Injection of dependencies can come in many forms. Constructor Injection is what we have been using here since dependencies are injected into a constructor. There also exists Setter Injection and Interface Injection. In the case of the former, the dependent component will expose a setter method which will be used to inject the dependency - that is, it could expose a method like <code>setUserRepository(userRepository: UserRepository)</code>. In the last case, we can define interfaces through which to perform the injection, but I&rsquo;ll omit the explanation of the last technique here for brevity since we&rsquo;ll spend more time discussing it and more in the second article of this series.</p>
+<p>Because wiring up dependencies manually can be difficult, various IoC Frameworks and Containers exist. These containers store your dependencies and resolve the correct ones at runtime, often through Reflection in languages like C# or Java, exposing various configuration options for dependency lifetime. Despite the benefits that IoC Containers provide, there are cases to be made for moving away from them, and only resolving dependencies manually. To hear more about this, see Greg Young&rsquo;s <a href="https://www.infoq.com/presentations/8-lines-code-refactoring/">8 Lines of Code talk</a>.</p>
+<p>Additionally, DI Frameworks and IoC Containers can provide too many options, and many rely on decorators or attributes to perform techniques such as setter or field injection. I look down on this kind of approach because, if you think about it intuitively, the point of dependency injection is to achieve loose coupling, but if you begin to sprinkle IoC Container-specific decorators all over your business logic, while you may have achieved decoupling from the dependency, you&rsquo;ve inadvertently coupled yourself to the IoC Container. IoC Containers like Awilix solve this problem since they remain divorced from your application&rsquo;s business logic.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>This article served to depict only a very practical example of dependency injection in use and mostly neglected the theoretical attributes. I did it this way in order to make it easier to understand what dependency injection is at its core in a manner divorced from the rest of the complexity that people usually associate with the concept. In the second article of this series, we&rsquo;ll take a much, much more in-depth look, including at:</p>
+<ul>
+<li>The difference between Dependency Injection and Dependency Inversion and Inversion of Control</li>
+<li>Dependency Injection anti-patterns</li>
+<li>IoC Container anti-patterns</li>
+<li>The role of IoC Containers</li>
+<li>The different types of dependency lifetimes</li>
+<li>How IoC Containers are designed</li>
+<li>Dependency Injection with React</li>
+<li>Advanced testing scenarios</li>
+<li>And more</li>
+</ul>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="/tags/dependency-injection/">dependency-injection</a></span>
+        <span class="tag"><a href="/tags/unit-testing/">unit-testing</a></span>
+        <span class="tag"><a href="/tags/patterns/">patterns</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        5663 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2020-12-30 21:25 -0600
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="/2020/10/understanding-typescript-generics/">
+                <span class="button__text">Understanding Typescript Generics</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+      
+        <div id="comments">
+          <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jamiecorkhill" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+                <span><a href="/">Jamie Corkhill</a></span>
+            
+            
+            <span> <a href="/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+</footer>
+
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+
+
+
+    </body>
+</html>

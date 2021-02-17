@@ -1,5 +1,5 @@
 ---
-title: "Understanding Typescript Generics"
+title: "Understanding TypeScript Generics"
 date: 2020-10-14T11:10:54-05:00
 draft: false
 toc: false

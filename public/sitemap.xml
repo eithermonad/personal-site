@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/tags/comments/</loc>
+    <lastmod>2021-02-17T11:57:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2021/02/comments-are-not-always-an-anti-pattern/</loc>
+    <lastmod>2021-02-17T11:57:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2021-02-17T11:57:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2021-02-17T11:57:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/unit-tests/</loc>
+    <lastmod>2021-02-17T11:57:10-06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2020/12/a-practical-introduction-to-dependency-injection/</loc>
     <lastmod>2020-12-30T21:25:12-06:00</lastmod>
   </url>
@@ -14,16 +39,6 @@
   
   <url>
     <loc>/tags/patterns/</loc>
-    <lastmod>2020-12-30T21:25:12-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/</loc>
-    <lastmod>2020-12-30T21:25:12-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-12-30T21:25:12-06:00</lastmod>
   </url>
   

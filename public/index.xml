@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Comments Are Not Always an Anti-Pattern</title>
+      <link>/2021/02/comments-are-not-always-an-anti-pattern/</link>
+      <pubDate>Wed, 17 Feb 2021 11:57:10 -0600</pubDate>
+      
+      <guid>/2021/02/comments-are-not-always-an-anti-pattern/</guid>
+      <description>It certainly would not be erroneous to state that, more often than not, feeling the need to write comments implies a problem with underlying design - that the code itself leaves something to be desired. Code should be expressive and interfaces should be intention-revealing. If you get this right, you rarely need comments. The notion of behavior, not mere data, should be treated as first-class.
+It would make sense, then, to extrapolate this idea and say that comment usage itself is an anti-pattern.</description>
+    </item>
+    
+    <item>
       <title>A Practical Introduction to Dependency Injection</title>
       <link>/2020/12/a-practical-introduction-to-dependency-injection/</link>
       <pubDate>Wed, 30 Dec 2020 21:25:12 -0600</pubDate>

@@ -33,9 +33,9 @@ A need for English explanations may also arise out of situations where code is p
 
 In almost all other cases, comment usage does indeed imply that code should be refactored to express the meaning that once only existed within the comment. During refactoring, the meaning once implied in comments should manifest itself within the code based on proper naming, emphasis on behavior, the Tell Don't Ask principle, and, crucially, unit tests. 
 
-Saying that a unit test only exists to validate a given behavior is equally erroneous as stating that comments are always an anti-pattern. There is another crucial pice of value provided by tests that isn't always taken advantage of - not only do they verify behavior, they tell stories, they provide insight into logic and the domain.
+Saying that a unit test only exists to validate a given behavior is equally erroneous as stating that comments are always an anti-pattern. There is another crucial piece of value provided by tests that isn't always taken advantage of - not only do they verify behavior, they tell stories, they provide insight into logic and the domain.
 
-Test suites should be written such that a developer can gain all the insight he or she needs into the codebase by reading the story that the tests tell, be that through scenarios like Given/When/Then, or even simple notions like Arrange/Act/Assert. Writing expressive code in the first place plus having expressive test suites to fill in the gaps should remove both ambiguity and the need for comments entirely except in those cases listed above. Heavy procedural flows generally attract comments, for instance, when they can be perfectly explained in tests.
+Test suites should be written such that a developer can gain all the insight he or she needs into the codebase by reading the story that the tests tell, be that through scenarios like Given/When/Then or Arrange/Act/Assert. Writing expressive code in the first place plus having expressive test suites to fill in the gaps should remove both ambiguity and the need for comments entirely except in those cases listed above. Heavy procedural flows generally attract comments, for instance, when they can be perfectly explained in tests.
 
 ## Conclusion
 

@@ -58,11 +58,20 @@ A little bit more complex:</description>
     </item>
     
     <item>
-      <title>Getting Started With An Express And ES6&#43; JavaScript Stack</title>
-      <link>/2020/09/getting-started-with-an-express-and-es6-javascript-stack/</link>
-      <pubDate>Sun, 13 Sep 2020 14:27:44 -0500</pubDate>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/09/getting-started-with-an-express-and-es6-javascript-stack/</guid>
+      <guid>/about/</guid>
+      <description>Age: 18. Software Developer. TypeScript, React, Node, C#. Lover of Enterprise Patterns, Physics. Learning DDD/CQRS/ES &amp;amp; Microservices.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started With An Express And ES6&#43; JavaScript Stack</title>
+      <link>/2019/11/getting-started-with-an-express-and-es6-javascript-stack/</link>
+      <pubDate>Fri, 22 Nov 2019 14:27:44 -0500</pubDate>
+      
+      <guid>/2019/11/getting-started-with-an-express-and-es6-javascript-stack/</guid>
       <description>This article was first written for Smashing Magazine on November 22nd, 2019. You can find it here.
  This article is the second part in a series, with part one located here, which provided basic and (hopefully) intuitive insight into Node.js, ES6+ JavaScript, Callback Functions, Arrow Functions, APIs, the HTTP Protocol, JSON, MongoDB, and more.
 In this article, we&amp;rsquo;ll build upon the skills we attained in the previous one, learning how to implement and deploy a MongoDB Database for storing user booklist information, build an API with Node.</description>
@@ -70,22 +79,13 @@ In this article, we&amp;rsquo;ll build upon the skills we attained in the previo
     
     <item>
       <title>Get Started With Node: An Introduction To APIs, HTTP And ES6&#43; JavaScript</title>
-      <link>/2020/09/get-started-with-node-an-introduction-to-apis-http-and-es6-javascript/</link>
-      <pubDate>Sun, 13 Sep 2020 14:14:52 -0500</pubDate>
+      <link>/2019/02/get-started-with-node-an-introduction-to-apis-http-and-es6-javascript/</link>
+      <pubDate>Wed, 20 Feb 2019 14:14:52 -0500</pubDate>
       
-      <guid>/2020/09/get-started-with-node-an-introduction-to-apis-http-and-es6-javascript/</guid>
+      <guid>/2019/02/get-started-with-node-an-introduction-to-apis-http-and-es6-javascript/</guid>
       <description>This article was first written for Smashing Magazine on February 20, 2019. You can find it here.
  You’ve probably heard of Node.js as being an “asynchronous JavaScript runtime built on Chrome’s V8 JavaScript engine”, and that it “uses an event-driven, non-blocking I/O model that makes it lightweight and efficient”. But for some, that is not the greatest of explanations.
 What is Node in the first place? What exactly does it mean for Node to be “asynchronous”, and how does that differ from “synchronous”?</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>Age: 18. Software Developer. TypeScript, React, Node, C#. Lover of Enterprise Patterns, Physics. Learning DDD/CQRS/ES &amp;amp; Microservices.</description>
     </item>
     
   </channel>

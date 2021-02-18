@@ -1,6 +1,6 @@
 ---
 title: "Getting Started With An Express And ES6+ JavaScript Stack"
-date: 2020-09-13T14:27:44-05:00
+date: 2019-11-22T14:27:44-05:00
 draft: false
 ---
 

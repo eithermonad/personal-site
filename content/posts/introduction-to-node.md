@@ -1,6 +1,6 @@
 ---
 title: "Get Started With Node: An Introduction To APIs, HTTP And ES6+ JavaScript"
-date: 2020-09-13T14:14:52-05:00
+date: 2019-02-20T14:14:52-05:00
 draft: false
 ---
 

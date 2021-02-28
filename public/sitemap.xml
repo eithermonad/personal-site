@@ -3,6 +3,71 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/tags/adapter-pattern/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/advice/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2021/02/an-ever-growing-collection-of-software-development-advice/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/dependency-injection/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/frameworks/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/opinion/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/orm/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/repository/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/software-architecture/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/software-development/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/unit-testing/</loc>
+    <lastmod>2021-02-27T00:38:10-06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/comments/</loc>
     <lastmod>2021-02-17T11:57:10-06:00</lastmod>
   </url>
@@ -13,32 +78,7 @@
   </url>
   
   <url>
-    <loc>/tags/opinion/</loc>
-    <lastmod>2021-02-17T11:57:10-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/</loc>
-    <lastmod>2021-02-17T11:57:10-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2021-02-17T11:57:10-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/unit-testing/</loc>
-    <lastmod>2021-02-17T11:57:10-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/2020/12/a-practical-introduction-to-dependency-injection/</loc>
-    <lastmod>2020-12-30T21:25:12-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/dependency-injection/</loc>
     <lastmod>2020-12-30T21:25:12-06:00</lastmod>
   </url>
   

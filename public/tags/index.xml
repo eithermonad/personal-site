@@ -6,10 +6,100 @@
     <description>Recent content in Tags on Jamie Corkhill</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Feb 2021 11:57:10 -0600</lastBuildDate>
+    <lastBuildDate>Sat, 27 Feb 2021 00:38:10 -0600</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>adapter-pattern</title>
+      <link>/tags/adapter-pattern/</link>
+      <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+      
+      <guid>/tags/adapter-pattern/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>advice</title>
+      <link>/tags/advice/</link>
+      <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+      
+      <guid>/tags/advice/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dependency-injection</title>
+      <link>/tags/dependency-injection/</link>
+      <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+      
+      <guid>/tags/dependency-injection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>frameworks</title>
+      <link>/tags/frameworks/</link>
+      <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+      
+      <guid>/tags/frameworks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>opinion</title>
+      <link>/tags/opinion/</link>
+      <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+      
+      <guid>/tags/opinion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>orm</title>
+      <link>/tags/orm/</link>
+      <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+      
+      <guid>/tags/orm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>repository</title>
+      <link>/tags/repository/</link>
+      <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+      
+      <guid>/tags/repository/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software-architecture</title>
+      <link>/tags/software-architecture/</link>
+      <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+      
+      <guid>/tags/software-architecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software-development</title>
+      <link>/tags/software-development/</link>
+      <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+      
+      <guid>/tags/software-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>unit-testing</title>
+      <link>/tags/unit-testing/</link>
+      <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+      
+      <guid>/tags/unit-testing/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>comments</title>
@@ -17,33 +107,6 @@
       <pubDate>Wed, 17 Feb 2021 11:57:10 -0600</pubDate>
       
       <guid>/tags/comments/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>opinion</title>
-      <link>/tags/opinion/</link>
-      <pubDate>Wed, 17 Feb 2021 11:57:10 -0600</pubDate>
-      
-      <guid>/tags/opinion/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>unit-testing</title>
-      <link>/tags/unit-testing/</link>
-      <pubDate>Wed, 17 Feb 2021 11:57:10 -0600</pubDate>
-      
-      <guid>/tags/unit-testing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dependency-injection</title>
-      <link>/tags/dependency-injection/</link>
-      <pubDate>Wed, 30 Dec 2020 21:25:12 -0600</pubDate>
-      
-      <guid>/tags/dependency-injection/</guid>
       <description></description>
     </item>
     

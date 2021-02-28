@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>opinion on Jamie Corkhill</title>
-    <link>/tags/opinion/</link>
-    <description>Recent content in opinion on Jamie Corkhill</description>
+    <title>adapter-pattern on Jamie Corkhill</title>
+    <link>/tags/adapter-pattern/</link>
+    <description>Recent content in adapter-pattern on Jamie Corkhill</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 27 Feb 2021 00:38:10 -0600</lastBuildDate>
     
-	<atom:link href="/tags/opinion/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/adapter-pattern/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,16 +20,6 @@
       <description>This article marks the home of an ever growing list of random software development advice, mostly covering architecture, mannerisms, principals, and practices. It is updated regularly and you can see the Changelog at the bottom of this page for more details.
 On Unit Testing Work in Progress.
 On Language and Framework Superiority It&amp;rsquo;s rather pervasive, especially among members of the web development industry, to consider certain languages, frameworks, and libraries as supreme to others - in some cases going as far as to say that said language, framework, or library is the best in the world.</description>
-    </item>
-    
-    <item>
-      <title>Comments Are Not Always an Anti-Pattern</title>
-      <link>/2021/02/comments-are-not-always-an-anti-pattern/</link>
-      <pubDate>Wed, 17 Feb 2021 11:57:10 -0600</pubDate>
-      
-      <guid>/2021/02/comments-are-not-always-an-anti-pattern/</guid>
-      <description>It certainly would not be erroneous to state that, more often than not, feeling the need to write comments implies a problem with underlying design - that the code itself leaves something to be desired. Code should be expressive and interfaces should be intention-revealing. If you get this right, you rarely need comments. The notion of behavior, not mere data, should be treated as first-class.
-It would make sense, then, to extrapolate this idea and say that comment usage itself is an anti-pattern.</description>
     </item>
     
   </channel>

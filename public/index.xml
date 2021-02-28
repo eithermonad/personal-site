@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>An Ever Growing Collection of Software Development Advice</title>
+      <link>/2021/02/an-ever-growing-collection-of-software-development-advice/</link>
+      <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+      
+      <guid>/2021/02/an-ever-growing-collection-of-software-development-advice/</guid>
+      <description>This article marks the home of an ever growing list of random software development advice, mostly covering architecture, mannerisms, principals, and practices. It is updated regularly and you can see the Changelog at the bottom of this page for more details.
+On Unit Testing Work in Progress.
+On Language and Framework Superiority It&amp;rsquo;s rather pervasive, especially among members of the web development industry, to consider certain languages, frameworks, and libraries as supreme to others - in some cases going as far as to say that said language, framework, or library is the best in the world.</description>
+    </item>
+    
+    <item>
       <title>Comments Are Not Always an Anti-Pattern</title>
       <link>/2021/02/comments-are-not-always-an-anti-pattern/</link>
       <pubDate>Wed, 17 Feb 2021 11:57:10 -0600</pubDate>

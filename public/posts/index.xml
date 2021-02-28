@@ -5,8 +5,40 @@
         <description>Recent content in Posts on Jamie Corkhill</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 17 Feb 2021 11:57:10 -0600</lastBuildDate>
+        <lastBuildDate>Sat, 27 Feb 2021 00:38:10 -0600</lastBuildDate>
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>An Ever Growing Collection of Software Development Advice</title>
+            <link>/2021/02/an-ever-growing-collection-of-software-development-advice/</link>
+            <pubDate>Sat, 27 Feb 2021 00:38:10 -0600</pubDate>
+            
+            <guid>/2021/02/an-ever-growing-collection-of-software-development-advice/</guid>
+            <description>This article marks the home of an ever growing list of random software development advice, mostly covering architecture, mannerisms, principals, and practices. It is updated regularly and you can see the Changelog at the bottom of this page for more details.
+On Unit Testing Work in Progress.
+On Language and Framework Superiority It&amp;rsquo;s rather pervasive, especially among members of the web development industry, to consider certain languages, frameworks, and libraries as supreme to others - in some cases going as far as to say that said language, framework, or library is the best in the world.</description>
+            <content type="html"><![CDATA[<p>This article marks the home of an ever growing list of random software development advice, mostly covering architecture, mannerisms, principals, and practices. It is updated regularly and you can see the <a href="">Changelog</a> at the bottom of this page for more details.</p>
+<h2 id="on-unit-testing">On Unit Testing</h2>
+<p>Work in Progress.</p>
+<!-- raw HTML omitted -->
+<h2 id="on-language-and-framework-superiority">On Language and Framework Superiority</h2>
+<p>It&rsquo;s rather pervasive, especially among members of the web development industry, to consider certain languages, frameworks, and libraries as supreme to others - in some cases going as far as to say that said language, framework, or library is the best in the world.</p>
+<p>Such blanket statements are inherently erroneous and speak to the inexperience of the person making the statement.</p>
+<p>At the end of the day, all languages, frameworks, libraries, principals, patterns, mechanisms, and architectures are <em>merely</em> <strong>tools</strong> - they exist solely as a means to an end, as a means to get the job done. Depending on the situation, one tool may be better suited than another to get that job done, but that never implies that said tool is in any manner &ldquo;supreme&rdquo; to the other(s) outside of that situation.</p>
+<p>It&rsquo;s important to understand that everything exists within a given context - all that ever succeeded did so within a clearly defined context, and everything that ever failed did so within an equally clearly defined context. Pick the tools that best fit the context within which you wish to use them.</p>
+<p>The specific criteria for tool selection that arise out of a given context aren&rsquo;t always strictly technical in nature - generally, political and logistical considerations have to be factored in, and it&rsquo;s up to you to decide how to balance the two. The priority of feature completion (time-to-market), the current skills and operating scope of the team, the performance requirements of the solution, the weight assigned to maintainability and the minimization of future technical debt, the community and ecosystem around the tech/tool, and more should go into deciding upon a specific tool, not the preference of the developer or development team.</p>
+<p>This sounds rather quite obvious, and, alas, it probably is to most. With that said, I all-too-often see and hear people publicly declare their favorite technologies and tech stacks and state that they use them for every project or every requirement, which is asking for trouble.</p>
+<p>Since I often hear this from some members of the web development community, I most generally see JavaScript, Node.js, and MongoDB held up to very high esteem and applied (erroneously) unilaterally across contexts. Just because you <em>can</em> use JavaScript on the front-end and the back-end doesn&rsquo;t mean you <em>should</em>. That said, it doesn&rsquo;t mean you <em>shouldn&rsquo;t</em> either - decide based on the context you&rsquo;re operating within. Similarly, just because there are methods of programming Microcontrollers with JavaScript doesn&rsquo;t imply that that&rsquo;s a good idea either - it just means the possibility exists. The same goes for MongoDB - most domains are inherently relational, and trying to represent such data in a denormalized manner won&rsquo;t always work out well (not that there aren&rsquo;t use cases for document storage forms - there are).</p>
+<p>Additionally, undue hate, negativity, and insults toward technologies follow naturally (unfortunately) from the designation of other technologies as supreme. For instance, you most often hear people make fun of C#, Java, and PHP as being old, legacy, out of date, reserved only for enterprise use cases, and too hard to work with. None of this is true, and the hilarious thing is that many of the people who make such statements have likely never worked with any of these, and instead merely jump on the bandwagon. The fact of the matter is that C#, Java, and PHP are great languages, have their use cases, and <em>do their jobs very well</em>, just as JavaScript does its job well.</p>
+<p>Just like you wouldn&rsquo;t attempt to use a Phillips screwdriver in all scenarios just because you &ldquo;prefer&rdquo; it to flatheads, don&rsquo;t try to utilize technologies in all situations either. <strong>If you have to massage the tool to fit the use case, then the tool isn&rsquo;t the right tool for the job.</strong> Let the needs of the project - both technical and political, your existing experience, the size and maturity of the community and the ecosystem around the tool, and any other relevant criteria govern technology selection. In doing so, you can make decisions through a purely objective lens.</p>
+<h2 id="changelog">Changelog</h2>
+<p><strong>February 27, 2021 at 11:47 PM CDT (05:47 AM Zulu):</strong></p>
+<ul>
+<li>Added section <a href="#on-unit-testing">On Unit Testing</a>.</li>
+<li>Added section <a href="#on-language-and-framework-superiority">On Language and Framework Superiority</a>.</li>
+</ul>
+]]></content>
+        </item>
         
         <item>
             <title>Comments Are Not Always an Anti-Pattern</title>

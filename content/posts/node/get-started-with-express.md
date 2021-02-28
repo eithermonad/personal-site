@@ -2,6 +2,16 @@
 title: "Getting Started With An Express And ES6+ JavaScript Stack"
 date: 2019-11-22T14:27:44-05:00
 draft: false
+toc: false
+images:
+tags:
+  - nodejs
+  - express-web-application-framework
+  - javascript
+  - http
+  - apis
+  - json
+  - mongodb
 ---
 
 > This article was first written for Smashing Magazine on November 22nd, 2019. You can find it [here](https://www.smashingmagazine.com/2019/11/express-es6-javascript-stack-mongodb-mongoose-servers/).

@@ -12,6 +12,8 @@ tags:
   - orm
   - adapter-pattern
   - dependency-injection
+  - advice
+  - opinion
 ---
 
 This article marks the home of an ever growing list of random software development advice, mostly covering architecture, mannerisms, principals, and practices. It was last updated on February 27th, 2021 at 12:40 AM CDT. See the [Changelog]() at the bottom of this page for more details.

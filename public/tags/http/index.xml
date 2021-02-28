@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>http on Jamie Corkhill</title>
+    <link>/tags/http/</link>
+    <description>Recent content in http on Jamie Corkhill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 Nov 2019 14:27:44 -0500</lastBuildDate>
+    
+	<atom:link href="/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Getting Started With An Express And ES6&#43; JavaScript Stack</title>
+      <link>/2019/11/getting-started-with-an-express-and-es6-javascript-stack/</link>
+      <pubDate>Fri, 22 Nov 2019 14:27:44 -0500</pubDate>
+      
+      <guid>/2019/11/getting-started-with-an-express-and-es6-javascript-stack/</guid>
+      <description>This article was first written for Smashing Magazine on November 22nd, 2019. You can find it here.
+ This article is the second part in a series, with part one located here, which provided basic and (hopefully) intuitive insight into Node.js, ES6+ JavaScript, Callback Functions, Arrow Functions, APIs, the HTTP Protocol, JSON, MongoDB, and more.
+In this article, we&amp;rsquo;ll build upon the skills we attained in the previous one, learning how to implement and deploy a MongoDB Database for storing user booklist information, build an API with Node.</description>
+    </item>
+    
+    <item>
+      <title>Get Started With Node: An Introduction To APIs, HTTP And ES6&#43; JavaScript</title>
+      <link>/2019/02/get-started-with-node-an-introduction-to-apis-http-and-es6-javascript/</link>
+      <pubDate>Wed, 20 Feb 2019 14:14:52 -0500</pubDate>
+      
+      <guid>/2019/02/get-started-with-node-an-introduction-to-apis-http-and-es6-javascript/</guid>
+      <description>This article was first written for Smashing Magazine on February 20, 2019. You can find it here.
+ You’ve probably heard of Node.js as being an “asynchronous JavaScript runtime built on Chrome’s V8 JavaScript engine”, and that it “uses an event-driven, non-blocking I/O model that makes it lightweight and efficient”. But for some, that is not the greatest of explanations.
+What is Node in the first place? What exactly does it mean for Node to be “asynchronous”, and how does that differ from “synchronous”?</description>
+    </item>
+    
+  </channel>
+</rss>

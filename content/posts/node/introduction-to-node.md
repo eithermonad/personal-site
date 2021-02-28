@@ -2,6 +2,12 @@
 title: "Get Started With Node: An Introduction To APIs, HTTP And ES6+ JavaScript"
 date: 2019-02-20T14:14:52-05:00
 draft: false
+tags:
+  - nodejs
+  - javascript
+  - http
+  - apis
+  - json
 ---
 
 > This article was first written for Smashing Magazine on February 20, 2019. You can find it [here](https://www.smashingmagazine.com/2019/02/node-api-http-es6-javascript/).

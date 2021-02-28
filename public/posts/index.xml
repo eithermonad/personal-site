@@ -17,7 +17,7 @@
             <description>This article marks the home of an ever growing list of random software development advice, mostly covering architecture, mannerisms, principals, and practices. It is updated regularly and you can see the Changelog at the bottom of this page for more details.
 On Unit Testing Work in Progress.
 On Language and Framework Superiority It&amp;rsquo;s rather pervasive, especially among members of the web development industry, to consider certain languages, frameworks, and libraries as supreme to others - in some cases going as far as to say that said language, framework, or library is the best in the world.</description>
-            <content type="html"><![CDATA[<p>This article marks the home of an ever growing list of random software development advice, mostly covering architecture, mannerisms, principals, and practices. It is updated regularly and you can see the <a href="">Changelog</a> at the bottom of this page for more details.</p>
+            <content type="html"><![CDATA[<p>This article marks the home of an ever growing list of random software development advice, mostly covering architecture, mannerisms, principals, and practices. It is updated regularly and you can see the <a href="#changelog">Changelog</a> at the bottom of this page for more details.</p>
 <h2 id="on-unit-testing">On Unit Testing</h2>
 <p>Work in Progress.</p>
 <!-- raw HTML omitted -->

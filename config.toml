@@ -5,6 +5,14 @@ title = "Jamie Corkhill"
 googleAnalytics = "G-335KT9XL6L"
 disqusShortname = "jamiecorkhill"
 
+enableRobotsTXT = true
+enableGitInfo   = false
+enableEmoji     = true
+enableMissingTranslationPlaceholders = false
+disableRSS     = false
+disableSitemap = false
+disable404     = false
+disableHugoGeneratorInject = false
 
 [params]
   dateform        = "Jan 2, 2006"

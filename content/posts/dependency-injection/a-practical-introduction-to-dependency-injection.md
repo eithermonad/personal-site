@@ -7,7 +7,7 @@ images:
 tags:
   - dependency-injection
   - unit-testing
-  - patterns
+  - software-patterns
 ---
 
 > This article was first written for Smashing Magazine on December 30, 2020. You can find it [here](https://www.smashingmagazine.com/2020/12/practical-introduction-dependency-injection/).

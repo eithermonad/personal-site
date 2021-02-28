@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>/tags/opinion/</loc>
+    <lastmod>2021-02-17T11:57:10-06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/posts/</loc>
     <lastmod>2021-02-17T11:57:10-06:00</lastmod>
   </url>
@@ -38,7 +43,7 @@
   </url>
   
   <url>
-    <loc>/tags/patterns/</loc>
+    <loc>/tags/software-patterns/</loc>
     <lastmod>2020-12-30T21:25:12-06:00</lastmod>
   </url>
   
@@ -93,7 +98,42 @@
   </url>
   
   <url>
+    <loc>/tags/apis/</loc>
+    <lastmod>2019-11-22T14:27:44-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/express-web-application-framework/</loc>
+    <lastmod>2019-11-22T14:27:44-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2019/11/getting-started-with-an-express-and-es6-javascript-stack/</loc>
+    <lastmod>2019-11-22T14:27:44-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/http/</loc>
+    <lastmod>2019-11-22T14:27:44-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/javascript/</loc>
+    <lastmod>2019-11-22T14:27:44-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/json/</loc>
+    <lastmod>2019-11-22T14:27:44-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/mongodb/</loc>
+    <lastmod>2019-11-22T14:27:44-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/nodejs/</loc>
     <lastmod>2019-11-22T14:27:44-05:00</lastmod>
   </url>
   

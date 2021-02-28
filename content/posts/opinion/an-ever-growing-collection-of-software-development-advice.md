@@ -13,6 +13,8 @@ tags:
   - adapter-pattern
   - dependency-injection
   - frameworks
+  - advice
+  - opinion
 ---
 
 This article marks the home of an ever growing list of random software development advice, mostly covering architecture, mannerisms, principals, and practices. It is updated regularly and you can see the [Changelog]() at the bottom of this page for more details.

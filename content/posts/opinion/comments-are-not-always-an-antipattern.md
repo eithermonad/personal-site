@@ -7,6 +7,7 @@ images:
 tags:
   - comments
   - unit-testing
+  - opinion 
 ---
 
 It certainly would not be erroneous to state that, more often than not, feeling the need to write comments implies a problem with underlying design - that the code itself leaves something to be desired. Code should be expressive and interfaces should be intention-revealing. If you get this right, you rarely need comments. The notion of behavior, not mere data, should be treated as first-class.

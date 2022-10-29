@@ -6,4 +6,4 @@ aliases = ["about","contact"]
   name = "Jamie Corkhill"
 +++
 
-Age: 18. Software Developer. TypeScript, React, Node, C#. Lover of Enterprise Patterns, Physics. Learning DDD/CQRS/ES & Microservices.
+Software Developer
